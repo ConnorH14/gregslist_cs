@@ -25,6 +25,16 @@ namespace greg.Services
       return carData;
     }
 
+    public Car UpdateCar(Car carData, int id)
+    {
+      var car = FakeDb.Cars.Find(c => c.Id == id);
+      FakeDb.Cars.Remove(car);
+      carData.Id = car.Id;
+      car = carData;
+      FakeDb.Cars.Add(car);
+      return car;
+    }
+
     public Car DeleteCar(int id) 
     {
       var car = FakeDb.Cars.Find(car => car.Id == id);
